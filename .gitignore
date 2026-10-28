@@ -1,0 +1,35 @@
+# dependencias
+/node_modules
+/.pnp
+.pnp.*
+
+# compilacion de Next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# variables de entorno (NUNCA subir: contienen claves secretas)
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel
+
+# logs y basura del sistema
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# resultados de scripts/bateria-bot.ts
+/bateria-resultados/

@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Identidad visual — Academia (anatomía / medicina)
+   Estética suave, médica, femenina pero seria.
+   Los colores y tokens se definen acá (Tailwind v4 los convierte
+   automáticamente en clases: bg-cream, text-ink, border-copper, etc.)
+   ============================================================ */
+
+@theme {
+  /* — Tipografías — */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", ui-serif, Georgia, serif;
+
+  /* — Paleta principal — */
+  --color-cream: #fbf7f4; /* blanco hueso / crema (tarjetas, barra lateral) */
+  --color-canvas: #ae6675; /* rosa viejo optimizado: apagado, cálido y elegante */
+  --color-canvas-deep: #985365; /* rosa viejo más profundo (detalles) */
+  --color-surface: #fffdfc; /* tarjetas: blanco cálido */
+  --color-surface-rose: #fdf6f4; /* superficie con velo rosado */
+  --color-blush: #e8b4b8; /* acento principal: rosa empolvado */
+  --color-blush-deep: #d99ba0; /* rosa más profundo (hover/énfasis) */
+  --color-blush-soft: #f5e4e3; /* rosa muy tenue (fondos) */
+  --color-gold: #c9a35b; /* dorado/cobre para detalles */
+  --color-copper: #b08d57; /* cobre para líneas finas y bordes */
+  --color-beige: #e5d5c5; /* beige cálido para fondos secundarios */
+
+  /* — Texto (marrón-grisáceo cálido en vez de negro puro) — */
+  --color-ink: #3a2e2a;
+  --color-ink-soft: #6f6058;
+  --color-ink-muted: #9a8c84;
+
+  /* — Líneas / hairlines — */
+  --color-line: #ece2da;
+  --color-line-warm: #e3d3c4;
+
+  /* — Estados de pago — */
+  --color-pago-sin: #857a73; /* sin pagar → gris/neutro */
+  --color-pago-sin-bg: #efeae6;
+  --color-pago-sena: #9c7a2c; /* señó → ámbar/dorado suave */
+  --color-pago-sena-bg: #f5e9cd;
+  --color-pago-ok: #5e7a5a; /* pagó completo → verde salvia suave */
+  --color-pago-ok-bg: #dde9d9;
+
+  /* — Sombras muy suaves y difusas — */
+  --shadow-soft: 0 1px 2px rgba(58, 46, 42, 0.03), 0 6px 24px rgba(58, 46, 42, 0.05);
+  --shadow-card: 0 1px 3px rgba(58, 46, 42, 0.04), 0 14px 44px rgba(58, 46, 42, 0.07);
+  --shadow-blush: 0 12px 40px rgba(217, 155, 160, 0.22);
+  --shadow-lift: 0 2px 6px rgba(58, 46, 42, 0.05), 0 22px 60px rgba(58, 46, 42, 0.1);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-blush-soft);
+    color: var(--color-ink);
+  }
+
+  /* Scrollbar discreta y cálida */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-warm) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-warm);
+    border-radius: 9999px;
+    border: 3px solid var(--color-cream);
+  }
+}
+
+/* ============================================================
+   Utilidades de apoyo
+   ============================================================ */
+
+@layer utilities {
+  /* Línea fina decorativa color cobre (separadores elegantes) */
+  .rule-copper {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--color-copper),
+      transparent
+    );
+  }
+
+  /* Aparición suave */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-up {
+    animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
